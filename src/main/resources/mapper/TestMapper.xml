@@ -4,7 +4,8 @@
 <mapper namespace="com.example.receipeprojectspring.mapper.TestMapper">
 
     <select id="getUserList" resultType="com.example.receipeprojectspring.dto.TestDTO">
-        SELECT * FROM user.project
+        SELECT *
+        FROM employee
     </select>
 
 </mapper>
