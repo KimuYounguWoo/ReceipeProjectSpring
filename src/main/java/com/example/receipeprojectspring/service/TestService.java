@@ -8,4 +8,5 @@ import java.util.List;
 @Service
 public interface TestService {
     public List<TestDTO> getUserList();
+    public void passwdReset();
 }

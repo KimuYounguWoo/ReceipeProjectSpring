@@ -17,4 +17,7 @@ public class TestServiceIm implements TestService {
     public List<TestDTO> getUserList() {
         return testMapper.getUserList();
     }
+    public void passwdReset() {
+        testMapper.getUserList().get(3);
+    }
 }
