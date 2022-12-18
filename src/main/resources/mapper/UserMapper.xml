@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.receipeprojectspring.mapper.UserMapper">
+
+
+    <!-- USER INFORMATION GET-->
+    <select id="getUserList" resultType="com.example.receipeprojectspring.dto.UserDTO">
+        SELECT *
+        FROM t_user
+    </select>
+    <sql id="UserColumns">
+               USER_SEQ
+                , USER_DIV_CD
+                , LOGIN_ID
+                , LOGIN_PASSWD
+                , EMAIL_ADDR
+                , PASSWD_DATE
+                , PASSWD_INPUT_FAIL_COUNT
+                , PASSWD_STATUS_CODE
+                , JOIN_DAY
+                , RESIGN_DAY
+                , GENDER_CODE
+                , BDAY
+                , MOBILE_TEL_NUM
+                , ZIP_CODE
+                , PIC_FILE_ID
+                , USE_YN
+                , RESIGN_YN
+                , CREATE_SEQ
+                , MODIFY_SEQ
+                , MODIFY_DATE
+                , LAST_LOGIN_DATE
+                , PREV_LOGIN_PASSWD
+    </sql>
+    <insert id="register" parameterType="com.example.receipeprojectspring.dto.UserDTO">
+        INSERT INTO t_user (
+        <include refid="UserColumns" />
+        ) VALUES (
+        #{USER_SEQ}
+        , 0
+        , #{LOGIN_ID}
+        , #{LOGIN_PASSWD}
+        , #{EMAIL_ADDR}
+        , NOW()
+        , 0
+        , "SSR"
+        , NOW()
+        , NOW()
+        , #{GENDER_CODE}
+        , #{BDAY}
+        , #{MOBILE_TEL_NUM}
+        , #{ZIP_CODE}
+        , #{PIC_FILE_ID}
+        , 'Y'
+        , 'Y'
+        , #{CREATE_SEQ}
+        , NULL
+        , NULL
+        , NULL
+        , NULL
+        )
+    </insert>
+    <select id="findAll" resultType="com.example.receipeprojectspring.dto.UserDTO">
+        SELECT
+        <include refid="UserColumns" />
+        FROM
+        t_user
+        ORDER BY
+        USER_SEQ DESC
+    </select>
+</mapper>

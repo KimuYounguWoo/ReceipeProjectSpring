@@ -2,13 +2,17 @@ server:
   port: 8080
 
 spring:
-  profiles:
-    active: dev
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://218.152.181.52:3312/smdd?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSLL=false
     username: Kim
     password: 225486
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 3000
+      validation-timeout: 3000
+      minimum-idle: 5
+      max-lifetime: 240000
+      maximum-pool-size: 20
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
